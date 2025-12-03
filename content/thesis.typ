@@ -1,4 +1,4 @@
-#import "/template.typ": *
+#import "/utils.typ": *
 
 = Einleitung
 

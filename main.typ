@@ -1,4 +1,5 @@
-#import "/template.typ": *
+#import "/utils.typ": *
+#import "/template.typ": template
 
 #template(
   author: (
@@ -8,13 +9,14 @@
     number: "00000",
     centuria: "XXX",
     degree: "Bachelor of Science (B. Sc.) in Software Engineering",
+    university: "an der technischen Universität Musterstadt",
   ),
   paper: (
     type: "Bachelorarbeit",
     description: "zur Erlangung des akademischen Grades",
     title: "Interessanter Titel",
-    first_supervisor: "Max Musterprüfer",
-    second_supervisor: "",
+    first_reviewer: "Max Musterprüfer",
+    second_reviewer: "Moritz Musterprüfer",
     company_supervisor: "Max Musterbetreuer",
     company: "Firma GmbH",
     proposal: false,
@@ -24,9 +26,10 @@
   ),
 )[
   #frontmatter[
-    #list_of(auto, selector(heading).after(<frontmatter-start>).before(<appendix-start>))
+    #table_of_contents()
     #list_of("Abbildungsverzeichnis", figure.where(kind: image))
     #list_of("Tabellenverzeichnis", figure.where(kind: table))
+    #list_of("Quelltextverzeichnis", figure.where(kind: raw))
     #list_of_acronyms(
       "Abkürzungsverzeichnis",
       (
@@ -40,7 +43,7 @@
   ]
 
   #backmatter[
-    #bibliography("/assets/literature.bib", title: "Literaturverzeichnis")
+    #bibliography(title: "Literaturverzeichnis", "/assets/literature.bib")
     #list_of("Anhangsverzeichnis", selector(heading).after(<appendix-start>).before(<appendix-end>))
   ]
 
